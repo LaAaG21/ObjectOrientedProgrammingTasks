@@ -1,0 +1,93 @@
+# Visual Studio
+
+.vs/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Build results
+
+[Dd]ebug/
+[Rr]elease/
+x64/
+x86/
+[Bb]in/
+[Oo]bj/
+
+# Visual Studio Code
+
+.vscode/
+
+# Rider
+
+.idea/
+
+# NuGet
+
+packages/
+*.nupkg
+*.snupkg
+
+# Test Results
+
+TestResults/
+
+# Logs
+
+*.log
+
+# Temporary files
+
+*.tmp
+*.temp
+
+# Generated files
+
+Generated/
+
+# Publish output
+
+publish/
+Publish/
+
+# Azure
+
+*.publishsettings
+
+# Resharper
+
+_ReSharper*/
+*.[Rr]e[Ss]harper
+
+# SQL Server
+
+*.mdf
+*.ldf
+
+# OS files
+
+Thumbs.db
+Desktop.ini
+
+# Windows
+
+$RECYCLE.BIN/
+
+# Mac
+
+.DS_Store
+
+# Coverage
+
+coverage/
+*.coverage
+*.coveragexml
+
+# Dotnet
+
+artifacts/
+
+# Local settings
+
+appsettings.Development.json

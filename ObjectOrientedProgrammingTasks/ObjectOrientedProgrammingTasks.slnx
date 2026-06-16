@@ -1,3 +1,5 @@
 <Solution>
-  <Project Path="OOPpart1/OOPpart1.csproj" Id="871d610b-3ad0-44d3-8ef0-c1b4bf19e2e5" />
+  <Folder Name="/Solution Items/">
+    <File Path=".gitignore" />
+  </Folder>
 </Solution>
