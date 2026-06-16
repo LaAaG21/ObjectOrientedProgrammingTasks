@@ -44,6 +44,7 @@
         {
             guestId = id;
             guestName = n;
+            roomNumber = "Not Assigned";
             checkInDate = d;
             totalNights = t;
             
@@ -60,6 +61,11 @@
         static string roomNo;
         static string roomT;
         static double pric;
+
+        static string id;
+        static string gName;
+        static string cDate;
+        static int noNights;
 
         public static string Mainmenu()
         {
@@ -150,15 +156,42 @@
 
         public static void Register()
         {
+            Console.Write("Enter Your Name: ");
+            gName = Console.ReadLine();
+
+            Console.WriteLine();
+
+            Console.Write("Enter The Date, Example'21/6/2026' : ");
+            cDate = Console.ReadLine().Trim();
+
+            Console.WriteLine();
+
+            Console.Write("Enter Number of Nights: ");
+            noNights = Convert.ToInt32(Console.ReadLine());
+
+            if (noNights <= 0)
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("The Number of Nights Most Be Positive");
+                Console.ResetColor();
+            }
+
+            id = "G" + (guests.Count() + 1).ToString("D3");
+            Console.WriteLine();
+
+            guests.Add(new Guest(id, gName, cDate, noNights));
+
+            Console.ForegroundColor = ConsoleColor.DarkGreen;
+            Console.WriteLine("Seccessfully Added The Room..");
+            Console.WriteLine();
+            Console.ResetColor();
+
+            Console.WriteLine($"ID: {id}    |   Guest Name: {gName} |   Check-in Date: {cDate}  |   Number of Nights: {noNights}");
 
         }
 
         static void Main(string[] args)
-        {
-
-            
-
-
+        {         
 
             rooms.Add(new Room("F110", "single", 35.4));
             rooms.Add(new Room("F111", "double", 55.5));
@@ -198,7 +231,9 @@
                         Console.ResetColor();
 
                         Console.WriteLine();
-                        Console.WriteLine("Under Devalopment..");
+                        //Console.WriteLine("Under Devalopment..");
+
+                        Register();
 
                         break;
 
