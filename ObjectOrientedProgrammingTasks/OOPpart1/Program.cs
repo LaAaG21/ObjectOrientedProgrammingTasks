@@ -5,23 +5,20 @@
     {
         public string roomNumber;
         public string roomType;
-        public string pricePerNight;
+        public double pricePerNight;
         public bool isAvalibale;
 
         public void displayRoom()
         {
 
-        }
+        }        
 
-        public void room(string No)
-        {
-            roomNumber = No;
-        }
-
-        public void room(string No, string t)
+        public Room(string No, string t, double p)
         {
             roomNumber = No;
             roomType = t;
+            pricePerNight = p;
+            isAvalibale = true;
         }
     }
 
@@ -42,13 +39,27 @@
         {
 
         }
+
+        public Guest(string id, string n, string d, double t)
+        {
+            guestId = id;
+            guestName = n;
+            checkInDate = d;
+            totalNights = t;
+            
+        }
     }
 
 
     internal class Program
     {
+        public static List<Room>  rooms  = new List<Room>();
+        public static List<Guest> guests = new List<Guest>();
 
         static bool menulop = true;
+        static string roomNo;
+        static string roomT;
+        static double pric;
 
         public static string Mainmenu()
         {
@@ -92,14 +103,69 @@
             return Console.ReadLine();
         }
 
+        public static void Newroom()
+        {
+            Console.Write("Enter Room Number: ");
+            roomNo = Console.ReadLine();
 
+            Console.WriteLine();
 
+            Console.Write("Enter Room Type (Single / Double / Suite): ");
+            roomT = Console.ReadLine().Trim().ToLower();
+
+            Console.WriteLine();
+
+            Console.Write("Enter Price Per Night: ");
+            pric = Convert.ToDouble(Console.ReadLine());
+
+            Console.WriteLine();
+
+            if (rooms.Any(r => r.roomNumber == roomNo))
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("The Room Number Is Already Exists!..");
+                Console.ResetColor();
+                return;
+            }
+
+            if (roomT != "single" || roomT != "double" || roomT != "suite")
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("The Room Type You Wrote Is Wrong!..");
+                Console.ResetColor();
+                return;
+            }
+
+            rooms.Add(new Room(roomNo, roomT, pric));
+
+            Console.ForegroundColor = ConsoleColor.DarkGreen;
+            Console.WriteLine("Seccessfully Added The Room..");
+            Console.WriteLine();
+            Console.ResetColor();
+
+            Console.WriteLine($"Room Number: {roomNo}   |   Room Type: {roomT}  |   Price Per Night: {pric}");
+            Console.WriteLine();
+            Console.WriteLine($"Total Rooms Are: {rooms.Count()}");
+        }
+
+        public static void Register()
+        {
+
+        }
 
         static void Main(string[] args)
         {
 
-            List<Room> rooms = new List<Room>();
-            List<Guest> guests = new List<Guest>();
+            
+
+
+
+            rooms.Add(new Room("F110", "single", 35.4));
+            rooms.Add(new Room("F111", "double", 55.5));
+            rooms.Add(new Room("F112", "single", 35.4));
+            rooms.Add(new Room("F113", "double", 55.5));
+            rooms.Add(new Room("F114", "suite" , 80.2));
+            rooms.Add(new Room("F115", "suite" , 80.2));
 
 
             do
@@ -121,8 +187,9 @@
                         Console.ResetColor();
 
                         Console.WriteLine();
-                        Console.WriteLine("Under Devalopment..");
+                        //Console.WriteLine("Under Devalopment..");
 
+                        Newroom();
 
                         break;
 
